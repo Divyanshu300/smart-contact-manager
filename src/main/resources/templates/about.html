@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About hai</title>
+</head>
+<body>
+    <h1>
+        This is About Page
+    </h1>
+    <hr/>
+
+    <!-- Using Fragments -->
+    <!-- <div th:replace = "~{base :: parent}">
+        Replace this div with fragment
+    </div> -->
+    
+    <!-- <div th:insert = "~{base :: parent}">
+        Insert fragment inseide this div
+    </div> -->
+    
+    <!-- Passing html
+    <div th:replace = "~{base :: parent(~{::section})}">
+        <section>hello World!</section>
+    </div>
+     -->
+    
+    <!-- Passing sub-Html -->
+    <!-- <div th:replace = "~{base :: parent(~{::section})}">
+        <section>
+            <div>Hello Ji Kaise Hain App?</div>
+        </section>
+    </div> -->
+    
+    <!-- Passing Through Id -->
+    <!-- <div th:replace = "~{base :: parent(~{::#main_content})}">
+        <section id="main_content">
+            <div>Hello Ji Kaise Hain App?</div>
+        </section>
+    </div> -->
+    
+ 
+    <div th:replace = "${isLogin} ? ~{base :: parent(~{::#main_content})} : ~{base :: test}">
+        <section id="main_content">
+            <h1>User Is Logged in</h1>
+            <div>Hello Ji Kaise Hain App?</div>
+        </section>
+    </div>
+</body>
+</html>

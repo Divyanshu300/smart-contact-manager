@@ -1,0 +1,31 @@
+<!-- <div th:fragment="parent">
+    <div>Hello ji </div>
+    <div>How Are You ?</div>
+</div> -->
+
+<!-- <div th:fragment="parent">
+    <div>Hello ji </div>
+    <div>How Are You ?</div>
+</div> -->
+
+<!-- Using parameters as text
+<div th:fragment="parent(x , y)">
+    <div>Hello ji <span th:text = "${x}"></span> </div>
+    <div>How Are You ? <span th:text = "${y}"></span> </div>
+</div> -->
+
+<!-- Using Html -->
+<!-- <div th:fragment="parent(content)">
+    <div>Hello ji <span th:text = "${x}"></span> </div>
+    <div th:replace = "${content}">How Are You ? <span th:text = "${y}"></span> </div>
+</div>   -->
+
+
+<div th:fragment="parent(content)">
+    <div>Hello ji <span th:text = "${x}"></span> </div>
+    <div th:replace = "${content}">How Are You ? <span th:text = "${y}"></span> </div>
+</div>
+
+<div th:fragment = "test">
+    <div>This is a test</div>
+</div>
