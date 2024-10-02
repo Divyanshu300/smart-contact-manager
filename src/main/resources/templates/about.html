@@ -1,51 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+th:replace = "~{base :: parent(~{::#content} , ~{::title} , ~{::script})}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About hai</title>
+    <title>About Page</title>
 </head>
 <body>
-    <h1>
-        This is About Page
-    </h1>
-    <hr/>
 
-    <!-- Using Fragments -->
-    <!-- <div th:replace = "~{base :: parent}">
-        Replace this div with fragment
-    </div> -->
-    
-    <!-- <div th:insert = "~{base :: parent}">
-        Insert fragment inseide this div
-    </div> -->
-    
-    <!-- Passing html
-    <div th:replace = "~{base :: parent(~{::section})}">
-        <section>hello World!</section>
+    <div id="content"  class="p-4 flex items-center justify-center flex-col">
+        <h1 class="text-4xl mb-4">
+            About Page
+        </h1>
+        <div>
+            this is the actual use of fragments
+        </div>
     </div>
-     -->
-    
-    <!-- Passing sub-Html -->
-    <!-- <div th:replace = "~{base :: parent(~{::section})}">
-        <section>
-            <div>Hello Ji Kaise Hain App?</div>
-        </section>
-    </div> -->
-    
-    <!-- Passing Through Id -->
-    <!-- <div th:replace = "~{base :: parent(~{::#main_content})}">
-        <section id="main_content">
-            <div>Hello Ji Kaise Hain App?</div>
-        </section>
-    </div> -->
-    
- 
-    <div th:replace = "${isLogin} ? ~{base :: parent(~{::#main_content})} : ~{base :: test}">
-        <section id="main_content">
-            <h1>User Is Logged in</h1>
-            <div>Hello Ji Kaise Hain App?</div>
-        </section>
-    </div>
+
+    <script>
+        console.log("About Page");
+    </script>
 </body>
 </html>

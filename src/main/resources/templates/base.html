@@ -1,31 +1,33 @@
-<!-- <div th:fragment="parent">
-    <div>Hello ji </div>
-    <div>How Are You ?</div>
-</div> -->
+<!DOCTYPE html>
+<html 
+    class="dark"
+    lang="en"
+    th:fragment = "parent(content , title , script)"
+    xmlns:th ="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:replace = "${title}">Document</title>
+    <link rel="stylesheet" data-th-href="@{'/css/output.css'}" />
+    <!-- FlowBite -->
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
+</head>
+<body class="h-screen dark:bg-gray-900 dark:text-white flex flex-col justify-between">
 
-<!-- <div th:fragment="parent">
-    <div>Hello ji </div>
-    <div>How Are You ?</div>
-</div> -->
+    <!-- NavBar -->
+    <div th:replace = "~{navbar :: navbar}"></div>
+    
+    <!-- Main Content -->
+     <div th:replace = "${content}"></div>
 
-<!-- Using parameters as text
-<div th:fragment="parent(x , y)">
-    <div>Hello ji <span th:text = "${x}"></span> </div>
-    <div>How Are You ? <span th:text = "${y}"></span> </div>
-</div> -->
+    <!-- Footer -->
+    <div class="p-4 flex items-center justify-center"> 
+        This is the footer
+    </div>
 
-<!-- Using Html -->
-<!-- <div th:fragment="parent(content)">
-    <div>Hello ji <span th:text = "${x}"></span> </div>
-    <div th:replace = "${content}">How Are You ? <span th:text = "${y}"></span> </div>
-</div>   -->
-
-
-<div th:fragment="parent(content)">
-    <div>Hello ji <span th:text = "${x}"></span> </div>
-    <div th:replace = "${content}">How Are You ? <span th:text = "${y}"></span> </div>
-</div>
-
-<div th:fragment = "test">
-    <div>This is a test</div>
-</div>
+    <!-- FLowBite -->
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+    <script th:replace = "${script}"></script>    
+</body>
+</html>
