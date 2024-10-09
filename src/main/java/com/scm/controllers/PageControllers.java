@@ -4,7 +4,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.scm.forms.UserForm;
+
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 
 
@@ -46,8 +50,14 @@ public class PageControllers {
     }
 
     @GetMapping("/register")
-    public String register() {
+    public String register(Model model) {
         System.out.println("Register Page");
+
+        //create an object of UserForm
+        UserForm userForm = new UserForm();
+
+        //Send the object to the HTML page to either display or save the data
+        model.addAttribute("userForm", userForm);
         return "register";
     }
 
@@ -59,8 +69,13 @@ public class PageControllers {
     
     //Processing register
     @RequestMapping(value = "/do-register" , method = RequestMethod.POST)
-    public String preocessRegister() {
+    //UseForm waala object mein data fetch kroo
+    public String preocessRegister(@ModelAttribute UserForm  userForm) {
         System.out.println("Processing Registration");
-        return "";
+        //fetch data
+        //validate form data
+        //save to database
+        //Message: "Registration successful"
+        return "redirect:/login";
     }
 }
