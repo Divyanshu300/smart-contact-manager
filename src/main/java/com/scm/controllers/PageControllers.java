@@ -1,11 +1,18 @@
 package com.scm.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.scm.entities.User;
 import com.scm.forms.UserForm;
+import com.scm.helpers.Message;
+import com.scm.helpers.MessageType;
+import com.scm.services.UserService;
+
+import jakarta.servlet.http.HttpSession;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -16,6 +23,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 //iske madad se hmmlog frontend mein dynamic data bhej skte hai from backend to front end
 @Controller
 public class PageControllers {
+
+    //UserService ka use hmlog krenge isliye usko import krr lo
+    //construsctor injection recomended tareeka hai but hmlog abhi Autowired use krr rhe 
+    @Autowired
+    private UserService userService; 
 
     @RequestMapping("/home")
     public String home(Model model) {
@@ -76,12 +88,44 @@ public class PageControllers {
     //Processing register
     @RequestMapping(value = "/do-register" , method = RequestMethod.POST)
     //UseForm waala object mein data fetch kroo
-    public String preocessRegister(@ModelAttribute UserForm  userForm) {
+    public String preocessRegister(@ModelAttribute UserForm  userForm , HttpSession session) {
         System.out.println("Processing Registration");
         //fetch data
         //validate form data
-        //save to database
+        //save to database:-
+            //UserService:-
+            //ab yhaa prr scene ye hai ki kisi bhi service ko use krne ke liye hme user bhejna padega but hmaare passiss controller mein formData hai
+            //User ko build krna padega using userForm  
+            // User user = User.builder()
+            //             .name(userForm.getName())
+                        // .email(userForm.getEmail())
+                        // .password(userForm.getPassword())
+                        // .about(userForm.getAbout())
+                        // .phoneNumber(userForm.getPhoneNumber())
+                        // .profilePic(
+                        //     "https://res.cloudinary.com/dxo2kr9bz/image/upload/v1717842583/0ad7f306-d6da-4717-a82d-55da93b5486f.jpg"
+                        // )
+            //             .build();
+
+            //builder mein default values nhi aa rhi thi so we are using this
+            User user = new User();
+            user.setName(userForm.getName());
+            user.setEmail(userForm.getEmail());
+            user.setPassword(userForm.getPassword());
+            user.setAbout(userForm.getAbout());
+            user.setPhoneNumber(userForm.getPhoneNumber());
+            user.setProfilePic(
+                "https://res.cloudinary.com/dxo2kr9bz/image/upload/v1717842583/0ad7f306-d6da-4717-a82d-55da93b5486f.jpg"
+            );
+
+            User savedUser = userService.saveUser(user);
+
+        System.out.println("user created");
         //Message: "Registration successful"
+        //addd the message
+        Message message =  Message.builder().content("Registration Successful").type(MessageType.green).build();
+        //jaise hi yhaa prr pahuchega session data mmein ye attribute add ho jayega and fir hmm usko front end prr use krr lenge
+        session.setAttribute("message", message);
         return "redirect:/login";
     }
 }

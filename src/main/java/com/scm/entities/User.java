@@ -6,6 +6,8 @@ import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
@@ -52,6 +54,8 @@ public class User {
     private boolean emailVerified;
     private boolean phoneVerified;
 
+
+    @Enumerated(value = EnumType.STRING) //taaki enum waala data table min store ho jaaye or woh string format mein save ho
     private Providers provider = Providers.SELF;
     private String providerUserId;
 
