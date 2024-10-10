@@ -12,6 +12,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Builder
 
+//Ye skeleton hai yaa yun keh lo ki object hai jisme saare ke saare forms ki details save hoti hai
 public class UserForm {
 
     private String name;

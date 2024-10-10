@@ -5,7 +5,10 @@ import java.util.Optional;
 
 import com.scm.entities.User;
 
+//ye un saaare methods ka collection hai jo ki user mein use honge 
 public interface UserService {
+
+    //ye saare methods ko ek trh se initialise kiyaa hai iska actual working com.scm.services.Impl mein describe kiyaa hai
     
     //User return krega
     User saveUser(User user);

@@ -23,6 +23,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+
+//Ye User ka schema hai(model)
 public class User {
 
     @Id
