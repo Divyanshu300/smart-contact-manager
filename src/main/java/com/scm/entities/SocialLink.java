@@ -24,6 +24,7 @@ public class SocialLink {
     private String link;
     private String title;
 
+    //Many to one map krne ke liye we use 
     @ManyToOne
     private Contact contact;
 }

@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 
 
 
-
+//jitne bhi routes hai unse ek webpage ko map krte hai isme
+//iske madad se hmmlog frontend mein dynamic data bhej skte hai from backend to front end
 @Controller
 public class PageControllers {
 
@@ -20,9 +21,13 @@ public class PageControllers {
     public String home(Model model) {
         System.out.println("Home Page Handler");
         // sending data to view
+        //data ko backend se frontend mein bhejne ke liye hmlog ek model bnaate hai and uso bhejte hai
+        //isme key orr value bhejte hai
         model.addAttribute("name", "Substring technologies"); // now we add name , value of attribute 
         model.addAttribute("youtubeChannel", "hello World!"); // now we add name , value of attribute 
         model.addAttribute("googleLink", "https://www.google.com"); // now we add name , value of attribute
+        
+        //String bhjte hai kyunki webpage ko as a string bhejte hai jitna hmm samajh paaye
         return "home";
     }
 
@@ -49,6 +54,7 @@ public class PageControllers {
         return "contact";
     }
 
+    //RequestMapping and GetMapping same hota hai bss requestmapping mein koi bhi method use krr skte hai and get mein sirf GET method hota hai
     @GetMapping("/register")
     public String register(Model model) {
         System.out.println("Register Page");
