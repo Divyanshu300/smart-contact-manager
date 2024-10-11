@@ -123,9 +123,9 @@ public class PageControllers {
         System.out.println("user created");
         //Message: "Registration successful"
         //addd the message
-        Message message =  Message.builder().content("Registration Successful").type(MessageType.green).build();
+        Message message =  Message.builder().content("Registration Successful").type(MessageType.blue).build();
         //jaise hi yhaa prr pahuchega session data mmein ye attribute add ho jayega and fir hmm usko front end prr use krr lenge
         session.setAttribute("message", message);
-        return "redirect:/login";
+        return "redirect:/register";
     }
 }
